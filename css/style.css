@@ -1,0 +1,179 @@
+
+/* Adições para plano de fundo e botão de voltar */
+body {
+  background-image: url('../img/piratas-marca-dagua.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: brightness(0.95);
+}
+#btn-home {
+  padding: 10px 20px;
+  background-color: #3e3a32;
+  color: gold;
+  border: 2px solid #7c5c3f;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 10px;
+  cursor: pointer;
+}
+#btn-home:hover {
+  background-color: #5a4a3b;
+}
+
+#title-game {
+  font-size: 32px;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 2px 2px 4px #3b2e20;
+  margin-bottom: 20px;
+}
+
+/* Mantendo os estilos anteriores */
+
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #faf8ef;
+  height: 100vh;
+  overflow: hidden;
+}
+.header {
+  margin-top: 20px;
+  text-align: center;
+}
+.scoreboard {
+  margin: 10px;
+}
+.score, .highscore {
+  background-color: #bbada0;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+.controls {
+  margin: 10px;
+}
+.game-container {
+  width: 420px;
+  height: 420px;
+  background-color: #bbada0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.tile {
+  width: 100%;
+  height: 100%;
+  background-color: #cdc1b4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: #776e65;
+  transition: transform 0.1s ease-in-out;
+}
+.merge {
+  animation: pop 0.2s ease-in-out;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+.tile-2 { background-color: #eee4da; }
+.tile-4 { background-color: #ede0c8; }
+.tile-8 { background-color: #f2b179; color: white; }
+.tile-16 { background-color: #f59563; color: white; }
+.tile-32 { background-color: #f67c5f; color: white; }
+.tile-64 { background-color: #f65e3b; color: white; }
+.tile-128 { background-color: #edcf72; color: white; }
+.tile-256 { background-color: #edcc61; color: white; }
+.tile-512 { background-color: #edc850; color: white; }
+.tile-1024 { background-color: #edc53f; color: white; }
+.tile-2048 { background-color: #edc22e; color: white; }
+#game-over {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #8f7a66;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+#start-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #faf8ef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+#start-screen img {
+  max-width: 300px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+
+.powerups {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.powerups img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+#start-screen {
+  background-image: url('../img/piratas-marca-dagua.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: brightness(0.96);
+  padding: 20px;
+}
+
+body {
+  height: auto;
+  min-height: 100vh;
+  padding-bottom: 30px;
+}
+
+.header, .scoreboard, .controls, .powerups {
+  margin: 5px 0;
+}
+
+#logo-title {
+  max-width: 300px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+}

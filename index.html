@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2048 Piratas Geniais</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="audio-button" style="position: absolute; top: 10px; right: 10px; z-index: 100;">
+    <img id="audio-icon" src="img/audio-off.png" alt="Audio Control" width="60">
+  </div>
+<h1 id="title-game">2048 Piratas Geniais</h1>
+  <div id="start-screen">
+    <img src="img/logo-piratas-geniais.png" alt="2048 Piratas Geniais" id="logo-title" />
+    <img src="img/piratas-geniais.png" alt="Piratas Geniais" />
+    <button id="start-btn">Iniciar Novo Jogo</button>
+    <button id="continue-btn">Continuar Jogando</button>
+  </div>
+
+<button id="btn-home">Tela Inicial</button>
+  <div class="header">
+    <div class="scoreboard">
+      <div class="score">Pontuação: <span id="score">0</span></div>
+      <div class="highscore">Recorde: <span id="highscore">0</span></div>
+    </div>
+    <div class="controls">
+      <button id="undo-btn">Desfazer Jogada</button>
+    </div>
+    <div class="powerups">
+      <img src="img/powerups/abacaxi.png" id="power-abacaxi" title="Dobrar próxima pontuação" />
+      <img src="img/powerups/uva.png" id="power-uva" title="Dobrar todas as peças" />
+      <img src="img/powerups/caixa.png" id="power-caixa" title="Embaralhar o tabuleiro" />
+      <img src="img/powerups/espada.png" id="power-espada" title="Destruir maior peça" />
+      <img src="img/powerups/banana.png" id="power-banana" title="Apagar peça escolhida" />
+    </div>
+  </div>
+
+  <div class="game-container" id="board"></div>
+
+  <div id="game-over">
+    <h2>Game Over!</h2>
+    <button id="restart-btn">Jogar Novamente</button>
+  </div>
+
+  <script src="js/game.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let touchstartX = 0;
+  let touchstartY = 0;
+  let touchendX = 0;
+  let touchendY = 0;
+
+  const threshold = 30;
+
+  function handleGesture() {
+    const deltaX = touchendX - touchstartX;
+    const deltaY = touchendY - touchstartY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (Math.abs(deltaX) > threshold) {
+        handleInput(deltaX > 0 ? "right" : "left");
+      }
+    } else {
+      if (Math.abs(deltaY) > threshold) {
+        handleInput(deltaY > 0 ? "down" : "up");
+      }
+    }
+  }
+
+  document.addEventListener('touchstart', e => {
+    if (e.target.closest("input, textarea")) return;
+    touchstartX = e.changedTouches[0].screenX;
+    touchstartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    if (e.target.closest("input, textarea")) return;
+    touchendX = e.changedTouches[0].screenX;
+    touchendY = e.changedTouches[0].screenY;
+    handleGesture();
+  }, { passive: true });
+
+  document.body.style.touchAction = 'manipulation';
+});
+</script>
+
+</body>
+</html>
