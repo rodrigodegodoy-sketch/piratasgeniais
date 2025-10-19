@@ -2,12 +2,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #000; /* Fundo escuro como base do jogo */
+  }
+
+  #game-container {
+    max-width: 100%;
+    width: 100vw;
+    height: calc(100vh - 100px); /* espaço para banner */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  canvas {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+  }
+</style>
+
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6906229690184321"
+     crossorigin="anonymous"></script>
+    
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2048 Piratas Geniais</title>
   <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      body {
+        overscroll-behavior: none;
+        overflow: hidden;
+        touch-action: none;
+      }
+    </style>
+    <script>
+      document.addEventListener('touchstart', function(e) {
+        if (e.touches[0].clientY > 10) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      document.addEventListener('touchmove', function(e) {
+        if (e.touches[0].clientY > 10) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    </script>
+    
 </head>
 <body>
+
+    <div style="width: 100%; text-align: center; margin-bottom: 10px;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6906229690184321"
+           data-ad-slot="2648697881"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+    
   <div id="audio-button" style="position: absolute; top: 10px; right: 10px; z-index: 100;">
     <img id="audio-icon" src="img/audio-off.png" alt="Audio Control" width="60">
   </div>
@@ -45,47 +119,5 @@
   </div>
 
   <script src="js/game.js"></script>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  let touchstartX = 0;
-  let touchstartY = 0;
-  let touchendX = 0;
-  let touchendY = 0;
-
-  const threshold = 30;
-
-  function handleGesture() {
-    const deltaX = touchendX - touchstartX;
-    const deltaY = touchendY - touchstartY;
-
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      if (Math.abs(deltaX) > threshold) {
-        handleInput(deltaX > 0 ? "right" : "left");
-      }
-    } else {
-      if (Math.abs(deltaY) > threshold) {
-        handleInput(deltaY > 0 ? "down" : "up");
-      }
-    }
-  }
-
-  document.addEventListener('touchstart', e => {
-    if (e.target.closest("input, textarea")) return;
-    touchstartX = e.changedTouches[0].screenX;
-    touchstartY = e.changedTouches[0].screenY;
-  }, { passive: true });
-
-  document.addEventListener('touchend', e => {
-    if (e.target.closest("input, textarea")) return;
-    touchendX = e.changedTouches[0].screenX;
-    touchendY = e.changedTouches[0].screenY;
-    handleGesture();
-  }, { passive: true });
-
-  document.body.style.touchAction = 'manipulation';
-});
-</script>
-
 </body>
 </html>
