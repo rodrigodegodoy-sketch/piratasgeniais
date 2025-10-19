@@ -8,21 +8,6 @@ let powerupUsed = {
 };
 let firstMoveDone = false;
 
-function handleInput(direction) {
-  const keyMap = {
-    "up": "ArrowUp",
-    "down": "ArrowDown",
-    "left": "ArrowLeft",
-    "right": "ArrowRight"
-  };
-  const key = keyMap[direction];
-  if (key) {
-    document.dispatchEvent(new KeyboardEvent('keydown', { key }));
-  }
-}
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const board = document.getElementById("board");
   const scoreEl = document.getElementById("score");
